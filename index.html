@@ -7,21 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="download('test.txt', 'Hello world!')">CLICK ME</button>
+    <img src="" alt="">
+    <script>
+        var myImage = document.querySelector('img');
+
+        fetch('https://file-examples-com.github.io/uploads/2017/10/file_example_JPG_100kB.jpg').then(function(response) {
+        return response.blob();
+        }).then(function(myBlob) {
+        var objectURL = URL.createObjectURL(myBlob);
+        myImage.src = objectURL;
+        });
+    </script>
 </body>
-<script>
-
-function download(filename, text) {
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
-
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
-}
-</script>
 </html>
